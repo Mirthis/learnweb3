@@ -4,12 +4,15 @@ import type { AppProps } from 'next/app';
 import { WagmiConfig } from 'wagmi';
 import { chains, wagmiClient } from '../utils/rainbowkit';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import Layout from '../components/layout/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
-        <Component {...pageProps} />;
+        <Layout>
+          <Component {...pageProps} />;
+        </Layout>
       </RainbowKitProvider>
     </WagmiConfig>
   );
