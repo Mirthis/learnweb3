@@ -1,13 +1,12 @@
-import { Nft } from 'alchemy-sdk';
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useState } from 'react';
+import Link from 'next/link';
+import { useAccount } from 'wagmi';
 import ConnectWalletButton from '../components/ConnectWalletButton';
-import NftList from '../components/NftList';
-import { alchemyClient } from '../utils/alchemySdk';
 
 const Home: NextPage = () => {
-  const [nfts, setNfts] = useState<Nft[]>();
+  const { address } = useAccount();
+
+  // const [nfts, setNfts] = useState<Nft[]>();
 
   // useEffect(() => {
   //   const getNfts = async () => {
@@ -20,19 +19,18 @@ const Home: NextPage = () => {
   // }, []);
 
   return (
-    <div>
-      <Head>
-        <title>Learn Web3 NFT viewer</title>
-        <meta name="description" content="Learn Web3 NFT viewer" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
+    <div className="flex flex-col items-center gap-8 text-center">
+      <h1>All your achievemtns NFTs in a single place</h1>
+      <div className={`${address ? 'hidden' : 'inline-block}'}`}>
         <ConnectWalletButton />
-        {nfts && <NftList nfts={nfts} />}
-      </main>
-
-      <footer></footer>
+      </div>
+      <div className={`${!address ? 'hidden' : 'inline-block}'}`}>
+        <button className="rounded-xl border-2 border-sky-300 p-4 text-xl font-bold">
+          <Link href="nfts">
+            <a className="no-underline">See your NFTs</a>
+          </Link>
+        </button>
+      </div>
     </div>
   );
 };

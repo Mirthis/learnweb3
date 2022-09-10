@@ -5,7 +5,7 @@ import { chain, configureChains, createClient } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-const availableChains = [chain.polygon, chain.polygonMumbai];
+const availableChains = [chain.polygon];
 
 const { chains, provider } = configureChains(availableChains, [
   alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }),

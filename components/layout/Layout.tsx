@@ -12,7 +12,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <meta name="description" content="The Lily Pad" key="description" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
+      <nav>
+        <Navbar />
+      </nav>
       <main className="mx-auto mt-2 min-h-[100vh] max-w-6xl">{children}</main>
       <ToastContainer
         position="top-right"

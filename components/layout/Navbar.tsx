@@ -4,6 +4,7 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 import { navBarItems } from '../../utils/constants';
 import DarkModeSwitch from '../DarkModeSwitch';
+import ConnectWalletButton from 'components/ConnectWalletButton';
 
 const Navbar = () => {
   const [visibile, setVisibile] = useState<boolean>(false);
@@ -66,6 +67,7 @@ const Navbar = () => {
           </ul>
           <div className="flex items-center justify-evenly gap-4">
             <DarkModeSwitch />
+            <ConnectWalletButton />
           </div>
         </div>
 
