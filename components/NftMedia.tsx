@@ -2,7 +2,7 @@ import { Media } from 'alchemy-sdk';
 
 const NftMedia = ({ media }: { media: Media[] }) => {
   return (
-    <div className="duration-300 ease-in hover:scale-105">
+    <div className="duration-300 ease-in hover:scale-[1.03]">
       <div>
         {/* TODO: parametrised image and video extension */}
         {!media[0].gateway.endsWith('.mp4') && (
