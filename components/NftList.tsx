@@ -40,13 +40,15 @@ const NftList = ({ nfts }: { nfts: Nft[] }) => {
       <button onClick={handleNftClick}>Tesst Modal</button>
       <NftModal open={modalOpen} nft={modalNft} closeModal={closeModal} />
       <div className="grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {nfts.map((nft) => (
-          <NftItem
-            key={`nft-${nft.tokenId}`}
-            nft={nft}
-            onClick={handleNftClick}
-          />
-        ))}
+        {nfts
+          // .filter((nft) => !nft.metadataError)
+          .map((nft) => (
+            <NftItem
+              key={`nft-${nft.tokenId}`}
+              nft={nft}
+              onClick={handleNftClick}
+            />
+          ))}
       </div>
     </>
   );
