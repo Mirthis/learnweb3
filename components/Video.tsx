@@ -1,4 +1,4 @@
-import { MouseEventHandler, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Video = ({ url }: { url: string }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);

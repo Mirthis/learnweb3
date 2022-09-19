@@ -1,5 +1,5 @@
 import NftList from 'components/NftList';
-import { useCollectionNfts } from 'hooks/useCollectionNfts';
+import { useNftCollection } from 'hooks/useNftCollection';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { collections } from 'utils/constants';
@@ -11,11 +11,21 @@ const MyNftPage: NextPage = () => {
 
   const collection = collections.find((c) => c.slug === slug);
 
-  const nfts = useCollectionNfts(collection?.address);
+  const { nfts, pageKey, loadMoreItems, isLoading } = useNftCollection(
+    collection?.address
+  );
 
   return (
     <div>
-      {collection && nfts && <NftList title={collection.name} nfts={nfts} />}
+      {collection && nfts && (
+        <NftList
+          title={collection.name}
+          nfts={nfts}
+          moreItems={!!pageKey}
+          loadMoreItems={loadMoreItems}
+          isLoading={isLoading}
+        />
+      )}
     </div>
   );
 };

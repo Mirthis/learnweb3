@@ -12,9 +12,6 @@ const NftModal = ({
   nft: Nft | undefined;
   closeModal: () => void;
 }) => {
-  console.log('description');
-  console.log(nft?.description);
-
   return (
     <div
       className="relative z-10"
@@ -46,7 +43,9 @@ const NftModal = ({
                   </div>
                   <div className="mb-4" />
                   <div>
-                    <NftMedia media={nft?.media} />
+                    {nft.media.length > 0 && nft.media[0].gateway && (
+                      <NftMedia url={nft.media[0].gateway} />
+                    )}
                   </div>
                   <div className="mb-4" />
                   <h6>Description</h6>

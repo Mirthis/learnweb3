@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import NftItem from './NftItem';
 import NftModal from './NftModal';
+import Spinner from './ui/Spinner';
 
 const findNft = (
   nfts: Nft[],
@@ -18,17 +19,22 @@ const NftList = ({
   nfts,
   title,
   nftCount,
+  moreItems,
+  loadMoreItems,
+  isLoading = false,
 }: {
   nfts: Nft[];
   title: string;
   nftCount?: number;
+  moreItems?: boolean;
+  isLoading?: boolean;
+  loadMoreItems?: () => void;
 }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalNft, setModalNft] = useState<Nft>();
 
-  const handleNftClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleNftClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const { address, tokenid: tokenId } = event.currentTarget.dataset;
-    console.log('NFT clicked', address, tokenId);
     if (!address || !tokenId) return;
     const nft = findNft(nfts, address, tokenId);
     if (nft) {
@@ -40,6 +46,12 @@ const NftList = ({
   const closeModal = () => {
     setModalNft(undefined);
     setModalOpen(false);
+  };
+
+  const handleLoadMoreItems = () => {
+    if (loadMoreItems) {
+      loadMoreItems();
+    }
   };
 
   return (
@@ -71,6 +83,20 @@ const NftList = ({
             />
           ))}
       </div>
+      {moreItems && (
+        <div className="my-6 flex flex-col items-center">
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <button
+              onClick={handleLoadMoreItems}
+              className="rounded-lg p-2 text-center font-bold uppercase tracking-widest"
+            >
+              Load more items
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

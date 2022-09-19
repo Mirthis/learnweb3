@@ -1,4 +1,3 @@
-import { Media } from 'alchemy-sdk';
 import { MEDIA_VIDEO_EXNTESIONS } from 'utils/constants';
 import Video from './Video';
 

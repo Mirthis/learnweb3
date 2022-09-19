@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Collection } from 'tyoes/types';
-import Card from './Card';
+import Card from './ui/Card';
 
 const CollectionItem = ({ collection }: { collection: Collection }) => {
   return (
     <Link href={`/browse/${collection.slug}`}>
-      <button>
+      <div className="cursor-pointer">
         <Card>
           <>
             <picture>
@@ -18,7 +18,7 @@ const CollectionItem = ({ collection }: { collection: Collection }) => {
             <div className="p-2 text-xl font-bold">{collection.name}</div>
           </>
         </Card>
-      </button>
+      </div>
     </Link>
   );
 };

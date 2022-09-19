@@ -9,9 +9,6 @@ import ConnectWalletButton from '../components/ConnectWalletButton';
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
 
-  console.log('Home is connected');
-  console.log(isConnected);
-
   const { nfts, nftCount } = useOwnerNfts(OWNER_NFT_FRONT_PAGE);
 
   return (

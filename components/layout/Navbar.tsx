@@ -13,9 +13,6 @@ const Navbar = () => {
   const router = useRouter();
   const { isConnected } = useAccount();
 
-  console.log('router.basePath');
-  console.log(router);
-
   useEffect(() => {
     const handleShadow = () => {
       if (window.scrollY >= 90) {
@@ -52,7 +49,7 @@ const Navbar = () => {
           <div className="shrink-0 grow text-center md:grow-0">
             <Link href="/">
               <a className="hover:border-0">
-                <Image src="/logo.png" alt="logo" width="50" height="50" />
+                {/* <Image src="/logo.png" alt="logo" width="50" height="50" /> */}
               </a>
             </Link>
           </div>

@@ -38,5 +38,5 @@ export const navBarItems = [
 
 export const OWNER_NFT_FRONT_PAGE = 3;
 export const OWNER_NFT_ITEMS = 30;
-export const NFT_COLLECTION_ITEMS = 30;
+export const NFT_COLLECTION_ITEMS = 3;
 export const MEDIA_VIDEO_EXNTESIONS = ['mp4'];
