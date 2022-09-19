@@ -13,6 +13,7 @@ export const useNftCollection = (
 
   const getNfts = async (collectionAddress: string, append = false) => {
     setIsLoading(true);
+    await alchemyClient.nft.refreshContract(collectionAddress);
     const resNfts = await alchemyClient.nft.getNftsForContract(
       collectionAddress,
       {

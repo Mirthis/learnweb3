@@ -34,6 +34,6 @@ export const navBarItems = [
 ];
 
 export const OWNER_NFT_FRONT_PAGE = 3; // Number of owned NFTs shown on the home page
-export const OWNER_NFT_ITEMS = 3; // Number of owned NFTs shown on the your nfts page
+export const OWNER_NFT_ITEMS = 30; // Number of owned NFTs shown on the your nfts page
 export const NFT_COLLECTION_ITEMS = 30; // number of NFTs shown when browing collection
 export const MEDIA_VIDEO_EXNTESIONS = ['mp4']; // Filter for video format
