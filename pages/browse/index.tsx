@@ -1,18 +1,8 @@
-import Link from 'next/link';
+import CollectionList from 'components/CollectionList';
 import { collections } from 'utils/constants';
 
 const index = () => {
-  return (
-    <div className="grid grid-cols-3">
-      {collections.map((c) => (
-        <div key={c.address}>
-          <button>
-            <Link href={`/browse/${c.slug}`}>{c.name}</Link>
-          </button>
-        </div>
-      ))}
-    </div>
-  );
+  return <CollectionList title="All collections" collections={collections} />;
 };
 
 export default index;

@@ -1,4 +1,5 @@
 import { Nft } from 'alchemy-sdk';
+import Link from 'next/link';
 import { useState } from 'react';
 import NftItem from './NftItem';
 import NftModal from './NftModal';
@@ -13,7 +14,15 @@ const findNft = (
   );
 };
 
-const NftList = ({ nfts }: { nfts: Nft[] }) => {
+const NftList = ({
+  nfts,
+  title,
+  nftCount,
+}: {
+  nfts: Nft[];
+  title: string;
+  nftCount?: number;
+}) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalNft, setModalNft] = useState<Nft>();
 
@@ -22,8 +31,6 @@ const NftList = ({ nfts }: { nfts: Nft[] }) => {
     console.log('NFT clicked', address, tokenId);
     if (!address || !tokenId) return;
     const nft = findNft(nfts, address, tokenId);
-    console.log('Found NFT');
-    console.log(nft);
     if (nft) {
       setModalNft(nft);
       setModalOpen(true);
@@ -36,8 +43,22 @@ const NftList = ({ nfts }: { nfts: Nft[] }) => {
   };
 
   return (
-    <>
-      <button onClick={handleNftClick}>Tesst Modal</button>
+    <div>
+      <div className="flex items-baseline gap-4">
+        <h3>{title}</h3>
+        {nftCount && (
+          <p>
+            {nfts.length} of {nftCount} displayed
+          </p>
+        )}
+        {nftCount && nfts.length < nftCount && (
+          <Link href="nfts">
+            <a className="font-bold uppercase tracking-widest">
+              See all your NFTs
+            </a>
+          </Link>
+        )}
+      </div>
       <NftModal open={modalOpen} nft={modalNft} closeModal={closeModal} />
       <div className="grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {nfts
@@ -50,7 +71,7 @@ const NftList = ({ nfts }: { nfts: Nft[] }) => {
             />
           ))}
       </div>
-    </>
+    </div>
   );
 };
 

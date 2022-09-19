@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-gray-200 tracking-wide text-gray-900 dark:bg-slate-900 dark:text-slate-400;
+    @apply bg-slate-900  tracking-wide text-slate-400;
   }
 
   h1,
@@ -13,7 +13,7 @@
   h4,
   h5,
   h6 {
-    @apply mt-2 mb-4 font-bold text-sky-300;
+    @apply mt-2 mb-8 font-bold text-sky-300;
   }
 
   h1 {

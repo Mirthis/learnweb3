@@ -1,36 +1,37 @@
+import CollectionList from 'components/CollectionList';
+import NftList from 'components/NftList';
+import { useOwnerNfts } from 'hooks/useOwnerNfts';
 import type { NextPage } from 'next';
-import Link from 'next/link';
+import { collections, OWNER_NFT_FRONT_PAGE } from 'utils/constants';
 import { useAccount } from 'wagmi';
 import ConnectWalletButton from '../components/ConnectWalletButton';
 
 const Home: NextPage = () => {
-  const { address } = useAccount();
+  const { isConnected } = useAccount();
 
-  // const [nfts, setNfts] = useState<Nft[]>();
+  console.log('Home is connected');
+  console.log(isConnected);
 
-  // useEffect(() => {
-  //   const getNfts = async () => {
-  //     const nfts = await alchemyClient.nft.getNftsForContract(
-  //       LEARNWEB3_NFT_CONTRACT_ADDRESS
-  //     );
-  //     setNfts(nfts.nfts);
-  //   };
-  //   getNfts();
-  // }, []);
+  const { nfts, nftCount } = useOwnerNfts(OWNER_NFT_FRONT_PAGE);
 
   return (
-    <div className="flex flex-col items-center gap-8 text-center">
-      <h1>All your achievemtns NFTs in a single place</h1>
-      <div className={`${address ? 'hidden' : 'inline-block}'}`}>
-        <ConnectWalletButton />
+    <div className="flex flex-col gap-y-10">
+      <div className="flex flex-col items-center gap-8 text-center">
+        <h2 className="lie text-8xl leading-none">
+          All your{' '}
+          <span className=" bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-8xl font-extrabold leading-none text-transparent">
+            proof of knowledge NFTs
+          </span>{' '}
+          in a single place
+        </h2>
+        {!isConnected && (
+          <div>
+            <ConnectWalletButton />
+          </div>
+        )}
       </div>
-      <div className={`${!address ? 'hidden' : 'inline-block}'}`}>
-        <button className="rounded-xl border-2 border-sky-300 p-4 text-xl font-bold">
-          <Link href="nfts">
-            <a className="no-underline">See your NFTs</a>
-          </Link>
-        </button>
-      </div>
+      {nfts && <NftList nfts={nfts} title="Your NFTs" nftCount={nftCount} />}
+      <CollectionList title="Featured Collections" collections={collections} />
     </div>
   );
 };

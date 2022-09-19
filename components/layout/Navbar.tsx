@@ -3,12 +3,18 @@ import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 import { navBarItems } from '../../utils/constants';
-import DarkModeSwitch from '../DarkModeSwitch';
 import ConnectWalletButton from 'components/ConnectWalletButton';
+import { useRouter } from 'next/router';
+import { useAccount } from 'wagmi';
 
 const Navbar = () => {
   const [visibile, setVisibile] = useState<boolean>(false);
   const [shadow, setShadow] = useState<boolean>(false);
+  const router = useRouter();
+  const { isConnected } = useAccount();
+
+  console.log('router.basePath');
+  console.log(router);
 
   useEffect(() => {
     const handleShadow = () => {
@@ -33,7 +39,7 @@ const Navbar = () => {
   return (
     <div className="h-20">
       <div
-        className={`fixed z-[100] h-20 w-full bg-gray-200 dark:bg-slate-900 ${
+        className={`fixed z-[100] h-20 w-full  bg-slate-900 ${
           shadow ? ' shadow-md shadow-black' : ''
         } `}
       >
@@ -66,8 +72,7 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="flex items-center justify-evenly gap-4">
-            <DarkModeSwitch />
-            <ConnectWalletButton />
+            {(router.asPath !== '/' || isConnected) && <ConnectWalletButton />}
           </div>
         </div>
 
