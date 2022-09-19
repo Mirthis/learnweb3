@@ -1,17 +1,16 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import ContactIcons from '../components/ContactIcons';
 
 const About: NextPage = () => {
   return (
     <>
       <Head>
-        <title>K-NFTs - About</title>
+        <title>Proof NFTs - About</title>
       </Head>
 
       <h3>About</h3>
-      <div className="grid grid-cols-2 gap-x-8">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
           <h6>The project</h6>
           <p>

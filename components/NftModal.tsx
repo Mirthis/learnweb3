@@ -30,15 +30,15 @@ const NftModal = ({
           open ? 'fixed' : 'hidden'
         } fixed inset-0 z-10 overflow-y-auto`}
       >
-        <div className="mt-20 flex min-h-full items-start justify-center p-4 text-center sm:p-0">
-          <div className="relative  transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+        <div className="mt-20 flex min-h-full items-start justify-center p-4 text-left sm:p-0">
+          <div className="p-4text-left  relative transform overflow-hidden rounded-lg border-2 border-sky-400 bg-sky-900 shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               {nft ? (
                 <>
                   <div className="flex justify-between">
-                    <div className="text-xl font-bold">{nft?.title}</div>
+                    <h5>{nft?.title}</h5>
                     <button onClick={closeModal}>
-                      <AiOutlineClose className="text-xl" />
+                      <AiOutlineClose className="text-xl text-sky-400" />
                     </button>
                   </div>
                   <div className="mb-4" />

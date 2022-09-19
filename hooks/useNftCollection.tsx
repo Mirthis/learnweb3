@@ -35,10 +35,7 @@ export const useNftCollection = (
 
   const loadMoreItems = () => {
     if (collectionAddress) {
-      console.log(nfts?.length);
-      console.log('Loading more...');
       getNfts(collectionAddress, true);
-      console.log(nfts?.length);
     }
   };
 

@@ -21,7 +21,7 @@ const NftItem = ({
           {nft.media.length > 0 && nft.media[0].gateway && (
             <Media url={nft.media[0].gateway} />
           )}
-          <div className="p-2 text-xl font-bold">{nft.title}</div>
+          <div className="p-2 text-xl font-bold text-sky-300">{nft.title}</div>
         </>
       </Card>
     </div>

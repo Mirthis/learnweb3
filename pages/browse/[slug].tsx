@@ -19,7 +19,7 @@ const MyNftPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>K-NFTs - {collection?.name}</title>
+        <title>Proof NFTs - {collection?.name}</title>
       </Head>
       <div>
         {collection && nfts && (

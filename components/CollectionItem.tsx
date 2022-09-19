@@ -10,7 +10,9 @@ const CollectionItem = ({ collection }: { collection: Collection }) => {
         <Card>
           <>
             <Media url={`/images/collections/${collection.imgLogo}`} />
-            <div className="p-2 text-xl font-bold">{collection.name}</div>
+            <div className="p-2 text-xl font-bold text-sky-300">
+              {collection.name}
+            </div>
           </>
         </Card>
       </div>

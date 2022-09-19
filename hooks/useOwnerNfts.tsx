@@ -7,28 +7,40 @@ import { useAccount } from 'wagmi';
 export const useOwnerNfts = (items = OWNER_NFT_ITEMS) => {
   const [nfts, setNfts] = useState<Nft[]>();
   const [nftCount, setNftCount] = useState<number>(0);
+  const [pageKey, setPageKey] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { address } = useAccount();
 
-  useEffect(() => {
-    const getNfts = async () => {
-      setIsLoading(true);
+  const getNfts = async (append = false) => {
+    setIsLoading(true);
 
-      const ownerAddress = '0x4A40Eb870DcF533D4dC097c3d87aaFE9f64490A1';
-      const nfts = await alchemyClient.nft.getNftsForOwner(ownerAddress, {
-        contractAddresses: collectionAddresses,
-        omitMetadata: false,
-        excludeFilters: [NftExcludeFilters.SPAM],
-        pageSize: items,
-      });
-      setIsLoading(false);
-      setNfts(nfts.ownedNfts);
-      setNftCount(nfts.totalCount);
-    };
+    const ownerAddress = '0x4A40Eb870DcF533D4dC097c3d87aaFE9f64490A1';
+    const resNfts = await alchemyClient.nft.getNftsForOwner(ownerAddress, {
+      contractAddresses: collectionAddresses,
+      omitMetadata: false,
+      excludeFilters: [NftExcludeFilters.SPAM],
+      pageKey: append ? pageKey : undefined,
+      pageSize: items,
+    });
+    setIsLoading(false);
+    setNfts(
+      append && nfts ? nfts.concat(resNfts.ownedNfts) : resNfts.ownedNfts
+    );
+    setNftCount(resNfts.totalCount);
+    setPageKey(resNfts.pageKey);
+  };
+
+  useEffect(() => {
     if (address) {
       getNfts();
     }
   }, [address, items]);
 
-  return { nfts, nftCount, isLoading };
+  const loadMoreItems = () => {
+    if (address) {
+      getNfts(true);
+    }
+  };
+
+  return { nfts, nftCount, isLoading, pageKey, loadMoreItems };
 };

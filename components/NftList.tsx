@@ -48,29 +48,32 @@ const NftList = ({
     setModalOpen(false);
   };
 
-  const handleLoadMoreItems = () => {
-    if (loadMoreItems) {
-      loadMoreItems();
-    }
-  };
+  // const handleLoadMoreItems = () => {
+  //   if (loadMoreItems) {
+  //     loadMoreItems();
+  //   }
+  // };
 
   return (
     <div>
-      <div className="flex items-baseline gap-4">
+      <div className="flex items-baseline justify-between gap-4">
         <h3>{title}</h3>
-        {nftCount && (
-          <p>
-            {nfts.length} of {nftCount} displayed
-          </p>
-        )}
-        {nftCount && nfts.length < nftCount && (
-          <Link href="nfts">
-            <a className="font-bold uppercase tracking-widest">
-              See all your NFTs
-            </a>
-          </Link>
-        )}
+        <div className="flex gap-4">
+          {nftCount && (
+            <p>
+              {nfts.length} of {nftCount}
+            </p>
+          )}
+          {nftCount && nfts.length < nftCount && (
+            <Link href="nfts">
+              <a className="font-bold uppercase tracking-widest text-sky-300">
+                See more
+              </a>
+            </Link>
+          )}
+        </div>
       </div>
+
       <NftModal open={modalOpen} nft={modalNft} closeModal={closeModal} />
       <div className="grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {nfts
@@ -89,8 +92,8 @@ const NftList = ({
             <Spinner />
           ) : (
             <button
-              onClick={handleLoadMoreItems}
-              className="rounded-lg p-2 text-center font-bold uppercase tracking-widest"
+              onClick={() => loadMoreItems?.()}
+              className="rounded-lg p-2 text-center font-bold uppercase tracking-widest text-sky-300"
             >
               Load more items
             </button>

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
@@ -49,6 +48,11 @@ const Navbar = () => {
           <div className="shrink-0 grow text-center md:grow-0">
             <Link href="/">
               <a className="hover:border-0">
+                <p className="text-md bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-extrabold leading-none text-transparent">
+                  PROOF
+                  <br />
+                  NFTs
+                </p>
                 {/* <Image src="/logo.png" alt="logo" width="50" height="50" /> */}
               </a>
             </Link>
@@ -88,12 +92,11 @@ const Navbar = () => {
               <div className="flex w-full items-center justify-between">
                 <Link href="/">
                   <a>
-                    <Image
-                      src="/assets/navLogo.png"
-                      alt="logo"
-                      width="64"
-                      height="45"
-                    />
+                    <p className="text-md bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-extrabold leading-none text-transparent">
+                      PROOF
+                      <br />
+                      NFTs
+                    </p>
                   </a>
                 </Link>
                 <div

@@ -13,10 +13,10 @@ const Home: NextPage = () => {
 
   return (
     <div className="flex flex-col gap-y-10">
-      <div className="flex flex-col items-center gap-8 text-center">
-        <h2 className="lie text-8xl leading-none">
+      <div className="flex flex-col items-center gap-y-8 text-center">
+        <h2 className="lie text-5xl leading-none sm:text-7xl lg:text-8xl">
           All your{' '}
-          <span className=" bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-8xl font-extrabold leading-none text-transparent">
+          <span className=" bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-extrabold leading-none text-transparent">
             proof of knowledge NFTs
           </span>{' '}
           in a single place

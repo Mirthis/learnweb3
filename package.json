@@ -17,7 +17,6 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "react-linkify": "^1.0.0-alpha",
-    "react-toastify": "^9.0.8",
     "wagmi": "^0.6.4"
   },
   "devDependencies": {

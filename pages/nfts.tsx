@@ -4,16 +4,25 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 
 const MyNftPage: NextPage = () => {
-  const { nfts, nftCount } = useOwnerNfts();
+  const { nfts, nftCount, loadMoreItems, isLoading, pageKey } = useOwnerNfts();
 
   return (
     <>
       <Head>
-        <title>K-NFTs - Your NFTs</title>
+        <title>Proof NFTs - Your NFTs</title>
       </Head>
 
       <div>
-        {nfts && <NftList nfts={nfts} title="Your NFTs" nftCount={nftCount} />}
+        {nfts && (
+          <NftList
+            nfts={nfts}
+            title="Your NFTs"
+            nftCount={nftCount}
+            loadMoreItems={loadMoreItems}
+            isLoading={isLoading}
+            moreItems={!!pageKey}
+          />
+        )}
       </div>
     </>
   );
