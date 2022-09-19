@@ -1,24 +1,28 @@
 import { Media } from 'alchemy-sdk';
+import { MEDIA_VIDEO_EXNTESIONS } from 'utils/constants';
+import Video from './Video';
 
-const NftMedia = ({ media }: { media: Media[] }) => {
+const NftMedia = ({ url }: { url: string }) => {
+  const mediaExtension = /[^.]*$/.exec(url)?.[0];
+
+  const video =
+    mediaExtension && MEDIA_VIDEO_EXNTESIONS.includes(mediaExtension)
+      ? true
+      : false;
+
   return (
     <div className="duration-300 ease-in hover:scale-[1.03]">
-      {media.length > 0 && (
-        <div>
-          {/* TODO: parametrised image and video extension */}
-          {!media[0].gateway.endsWith('.mp4') && (
-            <picture>
-              <source srcSet={media[0].gateway} />
-              <img src={media[0].gateway} alt="Nft image" />
-            </picture>
-          )}
-          {media[0].gateway.endsWith('.mp4') && (
-            <video>
-              <source src={media[0].gateway} />
-            </video>
-          )}
-        </div>
-      )}
+      <div>
+        {/* TODO: parametrised image and video extension */}
+        {video ? (
+          <Video url={url} />
+        ) : (
+          <picture>
+            <source srcSet={url} />
+            <img src={url} alt="Nft image" />
+          </picture>
+        )}
+      </div>
     </div>
   );
 };
