@@ -20,7 +20,7 @@ const Video = ({ url }: { url: string }) => {
       <video ref={video}>
         <source src={url} />
       </video>
-      <div className="absolute bottom-1 left-1 z-10 p-1 text-2xl">
+      <div className="absolute bottom-1 left-1   p-1 text-2xl">
         <button onClick={handlePlayClick}>
           {isPlaying ? '\u23F8' : '\u25B6'}
         </button>
