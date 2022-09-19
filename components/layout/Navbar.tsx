@@ -13,10 +13,6 @@ const Navbar = () => {
   const router = useRouter();
   const [user] = useAtom(userAtom);
 
-  console.log('user');
-  console.log(user);
-  console.log(!!user);
-
   useEffect(() => {
     const handleShadow = () => {
       if (window.scrollY >= 90) {

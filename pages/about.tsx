@@ -18,7 +18,7 @@ const About: NextPage = () => {
             display the one owned by the user based on their wallet address.
           </p>
           <h6>Features</h6>
-          <p>
+          <div>
             <ul className="list-disc">
               <li>Web3 wallet connection</li>
               <li>
@@ -30,9 +30,9 @@ const About: NextPage = () => {
               <li>Basic pagination</li>
               <li>Media playback for video NFTs</li>
             </ul>
-          </p>
+          </div>
           <h6>Tech</h6>
-          <p>
+          <div>
             <ul className="list-disc">
               <li>
                 <span className="font-bold">JavaScript / TypeScript -</span>{' '}
@@ -56,7 +56,7 @@ const About: NextPage = () => {
                 <span className="font-bold">Vercel -</span> Hosting
               </li>
             </ul>
-          </p>
+          </div>
         </div>
         <div>
           <h6>About the author</h6>
