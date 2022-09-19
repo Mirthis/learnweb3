@@ -5,11 +5,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Head>
-        <title>Proof NFTs - Homepaage</title>
-        <meta name="og:title" content="Proof NFTs" key="title" />
+        <title>POK NFTs - Homepaage</title>
+        <meta name="og:title" content="POK NFTs" key="title" />
         <meta
           name="description"
-          content="Proof NFTs - All your proof of knowledge NFTs in a single place"
+          content="POK NFTs - All your POK of knowledge NFTs in a single place"
           key="description"
         />
         <link rel="icon" href="/favicon.ico" />

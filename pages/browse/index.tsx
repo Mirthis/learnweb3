@@ -6,7 +6,7 @@ const index = () => {
   return (
     <>
       <Head>
-        <title>Proof NFTs - Collections</title>
+        <title>POK NFTs - Collections</title>
       </Head>
       <CollectionList title="All collections" collections={collections} />;
     </>

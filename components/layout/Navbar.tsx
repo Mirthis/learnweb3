@@ -58,7 +58,7 @@ const Navbar = () => {
             <Link href="/">
               <a className="hover:border-0">
                 <p className="text-md bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-extrabold leading-none text-transparent">
-                  PROOF
+                  POK
                   <br />
                   NFTs
                 </p>
@@ -102,7 +102,7 @@ const Navbar = () => {
                 <Link href="/">
                   <a>
                     <p className="text-md bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-extrabold leading-none text-transparent">
-                      PROOF
+                      POK
                       <br />
                       NFTs
                     </p>

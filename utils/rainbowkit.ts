@@ -11,7 +11,7 @@ const { chains, provider } = configureChains(availableChains, [
 ]);
 
 const { connectors } = getDefaultWallets({
-  appName: 'Proof NFTs',
+  appName: 'POK NFTs',
   chains,
 });
 

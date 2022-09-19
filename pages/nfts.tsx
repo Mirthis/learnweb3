@@ -21,7 +21,7 @@ const MyNftPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Proof NFTs - Your NFTs</title>
+        <title>POK NFTs - Your NFTs</title>
       </Head>
 
       <div>

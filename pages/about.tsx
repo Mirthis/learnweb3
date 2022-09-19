@@ -6,7 +6,7 @@ const About: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Proof NFTs - About</title>
+        <title>POK NFTs - About</title>
       </Head>
 
       <h3>About</h3>
@@ -14,7 +14,7 @@ const About: NextPage = () => {
         <div>
           <h6>The project</h6>
           <p>
-            This simple web app allows to browse proof of knowlege NFTs and
+            This simple web app allows to browse POK of knowlege NFTs and
             display the one owned by the user based on their wallet address.
           </p>
           <h6>Features</h6>
