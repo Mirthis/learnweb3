@@ -74,7 +74,7 @@ const NftList = ({
         )}
       </div>
 
-      {!!nftCount && nftCount > 0 ? (
+      {nfts.length > 0 ? (
         <>
           <NftModal open={modalOpen} nft={modalNft} closeModal={closeModal} />
           <div className="grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
