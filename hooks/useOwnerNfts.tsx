@@ -14,7 +14,8 @@ export const useOwnerNfts = (items = OWNER_NFT_ITEMS) => {
   const getNfts = async (append = false) => {
     setIsLoading(true);
 
-    const ownerAddress = '0x4A40Eb870DcF533D4dC097c3d87aaFE9f64490A1';
+    // const ownerAddress = '0x4A40Eb870DcF533D4dC097c3d87aaFE9f64490A1';
+    const ownerAddress = address || '';
     const resNfts = await alchemyClient.nft.getNftsForOwner(ownerAddress, {
       contractAddresses: collectionAddresses,
       omitMetadata: false,

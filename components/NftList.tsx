@@ -58,47 +58,53 @@ const NftList = ({
     <div>
       <div className="flex items-baseline justify-between gap-4">
         <h3>{title}</h3>
-        <div className="flex gap-4">
-          {nftCount && (
+        {!!nftCount && nftCount !== 0 && (
+          <div className="flex gap-4">
             <p>
               {nfts.length} of {nftCount}
             </p>
-          )}
-          {nftCount && nfts.length < nftCount && (
-            <Link href="nfts">
-              <a className="font-bold uppercase tracking-widest text-sky-300">
-                See more
-              </a>
-            </Link>
-          )}
-        </div>
+            {nfts.length < nftCount && (
+              <Link href="nfts">
+                <a className="font-bold uppercase tracking-widest text-sky-300">
+                  See more
+                </a>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
 
-      <NftModal open={modalOpen} nft={modalNft} closeModal={closeModal} />
-      <div className="grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {nfts
-          // .filter((nft) => !nft.metadataError)
-          .map((nft) => (
-            <NftItem
-              key={`nft-${nft.tokenId}`}
-              nft={nft}
-              onClick={handleNftClick}
-            />
-          ))}
-      </div>
-      {moreItems && (
-        <div className="my-6 flex flex-col items-center">
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <button
-              onClick={() => loadMoreItems?.()}
-              className="rounded-lg p-2 text-center font-bold uppercase tracking-widest text-sky-300"
-            >
-              Load more items
-            </button>
+      {!!nftCount && nftCount > 0 ? (
+        <>
+          <NftModal open={modalOpen} nft={modalNft} closeModal={closeModal} />
+          <div className="grid gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {nfts
+              // .filter((nft) => !nft.metadataError)
+              .map((nft) => (
+                <NftItem
+                  key={`nft-${nft.tokenId}`}
+                  nft={nft}
+                  onClick={handleNftClick}
+                />
+              ))}
+          </div>
+          {moreItems && (
+            <div className="my-6 flex flex-col items-center">
+              {isLoading ? (
+                <Spinner />
+              ) : (
+                <button
+                  onClick={() => loadMoreItems?.()}
+                  className="rounded-lg p-2 text-center font-bold uppercase tracking-widest text-sky-300"
+                >
+                  Load more items
+                </button>
+              )}
+            </div>
           )}
-        </div>
+        </>
+      ) : (
+        <p>No NFT found!</p>
       )}
     </div>
   );
