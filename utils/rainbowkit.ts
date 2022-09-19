@@ -1,5 +1,3 @@
-// import '@rainbow-me/rainbowkit/styles.css';
-
 import { getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain, configureChains, createClient } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -13,7 +11,7 @@ const { chains, provider } = configureChains(availableChains, [
 ]);
 
 const { connectors } = getDefaultWallets({
-  appName: 'The Lily Pad',
+  appName: 'Proof NFTs',
   chains,
 });
 

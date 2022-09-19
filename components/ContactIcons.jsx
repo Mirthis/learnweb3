@@ -38,7 +38,7 @@ const ContactIcons = () => {
       {iconList.map((icon) => (
         <Link key={icon.name} href={icon.url}>
           <a target={icon.internal ? '' : '_blank'}>
-            <div className="cursor-pointer rounded-full border-2 border-sky-700 p-3 duration-300 ease-in hover:scale-110">
+            <div className="cursor-pointer rounded-full border-2 border-sky-700 p-3 text-sky-400 duration-300 ease-in hover:scale-110">
               {icon.icon}
             </div>
           </a>

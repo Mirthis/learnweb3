@@ -14,15 +14,17 @@ const About: NextPage = () => {
         <div>
           <h6>The project</h6>
           <p>
-            The project implement a simple web application to browse proof of
-            knowlege NFTs and display the one owned by the user based on their
-            wallet address.
+            This simple web app allows to browse proof of knowlege NFTs and
+            display the one owned by the user based on their wallet address.
           </p>
           <h6>Features</h6>
           <p>
             <ul className="list-disc">
               <li>Web3 wallet connection</li>
-              <li>Browse your NFTs for the supported collections</li>
+              <li>
+                Browse user owned NFTs, based on connected wallet, for the
+                supported collections
+              </li>
               <li>Browse all the NFTs for the supported collections</li>
               <li>NFT details for each token</li>
               <li>Basic pagination</li>
@@ -37,7 +39,7 @@ const About: NextPage = () => {
                 main coding language
               </li>
               <li>
-                <span className="font-bold">NextJS / React -</span> Web-app
+                <span className="font-bold">NextJ S / React JS -</span> Web-app
                 framework
               </li>
               <li>
@@ -64,13 +66,12 @@ const About: NextPage = () => {
               <picture>
                 <source srcSet="/images/about/author.jpg" />
                 <img
-                  className="h-[300px] rounded-lg border-2"
+                  className="h-[300px] rounded-lg border-2 border-sky-700"
                   src="/images/about/author.jpg"
                   alt="author"
                 />
               </picture>
             </div>
-
             <ContactIcons />
           </div>
         </div>

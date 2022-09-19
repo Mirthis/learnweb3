@@ -1,13 +1,14 @@
 import CollectionList from 'components/CollectionList';
 import NftList from 'components/NftList';
 import { useOwnerNfts } from 'hooks/useOwnerNfts';
+import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
+import { userAtom } from 'utils/atoms';
 import { collections, OWNER_NFT_FRONT_PAGE } from 'utils/constants';
-import { useAccount } from 'wagmi';
 import ConnectWalletButton from '../components/ConnectWalletButton';
 
 const Home: NextPage = () => {
-  const { isConnected } = useAccount();
+  const [user] = useAtom(userAtom);
 
   const { nfts, nftCount } = useOwnerNfts(OWNER_NFT_FRONT_PAGE);
 
@@ -21,11 +22,7 @@ const Home: NextPage = () => {
           </span>{' '}
           in a single place
         </h2>
-        {!isConnected && (
-          <div>
-            <ConnectWalletButton />
-          </div>
-        )}
+        {!user && <ConnectWalletButton />}
       </div>
       {nfts && <NftList nfts={nfts} title="Your NFTs" nftCount={nftCount} />}
       <CollectionList title="Featured Collections" collections={collections} />

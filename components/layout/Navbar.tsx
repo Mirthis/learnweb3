@@ -4,13 +4,18 @@ import { useEffect, useState } from 'react';
 import { navBarItems } from '../../utils/constants';
 import ConnectWalletButton from 'components/ConnectWalletButton';
 import { useRouter } from 'next/router';
-import { useAccount } from 'wagmi';
+import { useAtom } from 'jotai';
+import { userAtom } from 'utils/atoms';
 
 const Navbar = () => {
   const [visibile, setVisibile] = useState<boolean>(false);
   const [shadow, setShadow] = useState<boolean>(false);
   const router = useRouter();
-  const { isConnected } = useAccount();
+  const [user] = useAtom(userAtom);
+
+  console.log('user');
+  console.log(user);
+  console.log(!!user);
 
   useEffect(() => {
     const handleShadow = () => {
@@ -31,6 +36,10 @@ const Navbar = () => {
   const hideNavBar = () => {
     setVisibile(false);
   };
+
+  const navBarUserItems = navBarItems.filter(
+    (l) => !l.login || l.login === !!user
+  );
 
   return (
     <div className="h-20">
@@ -61,7 +70,7 @@ const Navbar = () => {
             //TODO: move border styling out of individual lis
             */}
           <ul className="hidden md:flex md:flex-grow">
-            {navBarItems.map((link) => (
+            {navBarUserItems.map((link) => (
               <li
                 key={`navlink-${link.text}`}
                 className="ml-10 text-sm uppercase"
@@ -73,7 +82,7 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="flex items-center justify-evenly gap-4">
-            {(router.asPath !== '/' || isConnected) && <ConnectWalletButton />}
+            {(router.asPath !== '/' || user) && <ConnectWalletButton />}
           </div>
         </div>
 
@@ -109,7 +118,7 @@ const Navbar = () => {
             </div>
             <div className="flex flex-col py-4">
               <ul className="uppercase">
-                {navBarItems.map((link) => (
+                {navBarUserItems.map((link) => (
                   <li
                     key={link.text}
                     onClick={hideNavBar}

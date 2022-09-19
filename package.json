@@ -12,6 +12,7 @@
     "@rainbow-me/rainbowkit": "^0.5.1",
     "alchemy-sdk": "^2.0.3",
     "ethers": "^5.7.0",
+    "jotai": "^1.8.4",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",

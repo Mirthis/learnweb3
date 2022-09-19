@@ -1,3 +1,4 @@
+// Create slug to be used in URLs for SEO
 export function slugify(text: string) {
   return text
     .toString() // Cast to string (optional)
