@@ -1,6 +1,6 @@
 import { Nft } from 'alchemy-sdk';
 import { AiOutlineClose } from 'react-icons/ai';
-import NftMedia from './NftMedia';
+import Media from './Media';
 import Linkify from 'react-linkify';
 
 const NftModal = ({
@@ -44,7 +44,7 @@ const NftModal = ({
                   <div className="mb-4" />
                   <div>
                     {nft.media.length > 0 && nft.media[0].gateway && (
-                      <NftMedia url={nft.media[0].gateway} />
+                      <Media url={nft.media[0].gateway} />
                     )}
                   </div>
                   <div className="mb-4" />

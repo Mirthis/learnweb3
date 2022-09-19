@@ -1,7 +1,7 @@
 import { MEDIA_VIDEO_EXNTESIONS } from 'utils/constants';
 import Video from './Video';
 
-const NftMedia = ({ url }: { url: string }) => {
+const Media = ({ url }: { url: string }) => {
   const mediaExtension = /[^.]*$/.exec(url)?.[0];
 
   const video =
@@ -26,4 +26,4 @@ const NftMedia = ({ url }: { url: string }) => {
   );
 };
 
-export default NftMedia;
+export default Media;

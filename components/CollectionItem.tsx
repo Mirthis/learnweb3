@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Collection } from 'tyoes/types';
+import Media from './Media';
 import Card from './ui/Card';
 
 const CollectionItem = ({ collection }: { collection: Collection }) => {
@@ -8,13 +9,7 @@ const CollectionItem = ({ collection }: { collection: Collection }) => {
       <div className="cursor-pointer">
         <Card>
           <>
-            <picture>
-              <source srcSet={`/images/collections/${collection.imgLogo}`} />
-              <img
-                src={`/images/collections/${collection.imgLogo}`}
-                alt="Nft image"
-              />
-            </picture>
+            <Media url={`/images/collections/${collection.imgLogo}`} />
             <div className="p-2 text-xl font-bold">{collection.name}</div>
           </>
         </Card>

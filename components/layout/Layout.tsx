@@ -7,9 +7,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Head>
-        <title>The Lily Pad</title>
+        <title>K-NFTs - Homepaage</title>
         <meta name="og:title" content="The Lily Pad" key="title" />
-        <meta name="description" content="The Lily Pad" key="description" />
+        <meta
+          name="description"
+          content="K-NFTs - All your proof of knowledge NFTs in a single place"
+          key="description"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <nav>
