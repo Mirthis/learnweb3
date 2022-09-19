@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         <h2 className="lie text-5xl leading-none sm:text-7xl lg:text-8xl">
           All your{' '}
           <span className=" bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text font-extrabold leading-none text-transparent">
-            POK of knowledge NFTs
+            Proof of Knowledge NFTs
           </span>{' '}
           in a single place
         </h2>
