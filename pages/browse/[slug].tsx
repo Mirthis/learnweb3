@@ -1,5 +1,6 @@
 import NftList from 'components/NftList';
 import { useNftCollection } from 'hooks/useNftCollection';
+// import { useNftCollectionApi } from 'hooks/useNftCollectionApi';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -16,10 +17,16 @@ const MyNftPage: NextPage = () => {
     collection?.address
   );
 
+  // const { nfts, pageKey, loadMoreItems, isLoading } = useNftCollectionApi(
+  //   collection?.address
+  // );
+
+  // useNftCollectionApi(collection?.address);
+
   return (
     <>
       <Head>
-        <title>POK NFTs - {collection?.name}</title>
+        <title>POK NFTs - Collection</title>
       </Head>
       <div>
         {collection && nfts && (

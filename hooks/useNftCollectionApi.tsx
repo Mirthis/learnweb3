@@ -1,9 +1,8 @@
 import { Nft } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
-import { alchemyClient } from 'utils/alchemySdk';
 import { NFT_COLLECTION_ITEMS } from 'utils/constants';
 
-export const useNftCollection = (
+export const useNftCollectionApi = (
   collectionAddress: string | undefined,
   items: number = NFT_COLLECTION_ITEMS
 ) => {
@@ -15,15 +14,15 @@ export const useNftCollection = (
 
   const getNfts = async (collectionAddress: string, append = false) => {
     setIsLoading(true);
+
     try {
-      const resNfts = await alchemyClient.nft.getNftsForContract(
-        collectionAddress,
-        {
-          omitMetadata: false,
-          pageKey: append ? pageKey : undefined,
-          pageSize: items,
-        }
-      );
+      const resNfts = await (
+        await fetch(
+          `/api/collectionNfts?address=${collectionAddress}&pageSize=${items}${
+            append ? '&pageKey=pageKey' : ''
+          }`
+        )
+      ).json();
       setNfts(append && nfts ? nfts.concat(resNfts.nfts) : resNfts.nfts);
       setPageKey(resNfts.pageKey);
     } catch (err) {
@@ -46,5 +45,5 @@ export const useNftCollection = (
     }
   };
 
-  return { nfts, pageKey, loadMoreItems, isLoading, isError, error };
+  return { nfts, pageKey, loadMoreItems, isLoading, isError, setError };
 };

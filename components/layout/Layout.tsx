@@ -5,8 +5,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Head>
-        <title>POK NFTs - Homepaage</title>
-        <meta name="og:title" content="POK NFTs" key="title" />
         <meta
           name="description"
           content="POK NFTs - All your POK of knowledge NFTs in a single place"

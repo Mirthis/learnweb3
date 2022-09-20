@@ -10,44 +10,46 @@ export const useOwnerNfts = (items = OWNER_NFT_ITEMS) => {
   const [pageKey, setPageKey] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { address } = useAccount();
+  const [isError, setIsError] = useState<boolean>(false);
+  const [error, setError] = useState<Error>();
 
-  const getNfts = async (append = false) => {
+  const getNfts = async (address: string, append = false) => {
     setIsLoading(true);
 
     // const ownerAddress = '0x4A40Eb870DcF533D4dC097c3d87aaFE9f64490A1';
-    const ownerAddress = address || '';
-    const refreshPromises = collectionAddresses.map((c) =>
-      alchemyClient.nft.refreshContract(c)
-    );
 
-    await Promise.all(refreshPromises);
-
-    const resNfts = await alchemyClient.nft.getNftsForOwner(ownerAddress, {
-      contractAddresses: collectionAddresses,
-      omitMetadata: false,
-      excludeFilters: [NftExcludeFilters.SPAM],
-      pageKey: append ? pageKey : undefined,
-      pageSize: items,
-    });
-    setIsLoading(false);
-    setNfts(
-      append && nfts ? nfts.concat(resNfts.ownedNfts) : resNfts.ownedNfts
-    );
-    setNftCount(resNfts.totalCount);
-    setPageKey(resNfts.pageKey);
+    try {
+      const resNfts = await alchemyClient.nft.getNftsForOwner(ownerAddress, {
+        contractAddresses: collectionAddresses,
+        omitMetadata: false,
+        excludeFilters: [NftExcludeFilters.SPAM],
+        pageKey: append ? pageKey : undefined,
+        pageSize: items,
+      });
+      setNfts(
+        append && nfts ? nfts.concat(resNfts.ownedNfts) : resNfts.ownedNfts
+      );
+      setNftCount(resNfts.totalCount);
+      setPageKey(resNfts.pageKey);
+    } catch (err) {
+      setIsError(true);
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     if (address) {
-      getNfts();
+      getNfts(address);
     }
   }, [address, items]);
 
   const loadMoreItems = () => {
     if (address) {
-      getNfts(true);
+      getNfts(address, true);
     }
   };
 
-  return { nfts, nftCount, isLoading, pageKey, loadMoreItems };
+  return { nfts, nftCount, isLoading, pageKey, loadMoreItems, isError, error };
 };
