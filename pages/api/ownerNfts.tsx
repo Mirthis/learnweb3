@@ -1,3 +1,4 @@
+import { NftExcludeFilters } from 'alchemy-sdk';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { alchemyClient } from 'utils/alchemySdk';
 
@@ -15,10 +16,16 @@ export default async function handler(
     ? undefined
     : req.query.pageSize;
 
-  if (address && pageSize) {
+  const collectionAddresses = Array.isArray(req.query.collectionAddresses)
+    ? undefined
+    : req.query.collectionAddresses?.split(',');
+
+  if (address && pageSize && collectionAddresses) {
     try {
-      const resNfts = await alchemyClient.nft.getNftsForContract(address, {
+      const resNfts = await alchemyClient.nft.getNftsForOwner(address, {
+        contractAddresses: collectionAddresses,
         omitMetadata: false,
+        excludeFilters: [NftExcludeFilters.SPAM],
         pageKey: pageKey,
         pageSize: Number(pageSize),
       });

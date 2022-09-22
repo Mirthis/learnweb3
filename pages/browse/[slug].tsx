@@ -1,6 +1,5 @@
 import NftList from 'components/NftList';
-import { useNftCollection } from 'hooks/useNftCollection';
-// import { useNftCollectionApi } from 'hooks/useNftCollectionApi';
+import { useNftCollectionApi } from 'hooks/useNftCollectionApi';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -13,13 +12,9 @@ const MyNftPage: NextPage = () => {
 
   const collection = collections.find((c) => c.slug === slug);
 
-  const { nfts, pageKey, loadMoreItems, isLoading } = useNftCollection(
+  const { nfts, pageKey, loadMoreItems, isLoading } = useNftCollectionApi(
     collection?.address
   );
-
-  // const { nfts, pageKey, loadMoreItems, isLoading } = useNftCollectionApi(
-  //   collection?.address
-  // );
 
   // useNftCollectionApi(collection?.address);
 

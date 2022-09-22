@@ -1,5 +1,5 @@
 import NftList from 'components/NftList';
-import { useOwnerNfts } from 'hooks/useOwnerNfts';
+import { useOwnerNftsApi } from 'hooks/useOwnerNftsApi';
 import { useAtom } from 'jotai';
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -8,7 +8,8 @@ import { useEffect } from 'react';
 import { userAtom } from 'utils/atoms';
 
 const MyNftPage: NextPage = () => {
-  const { nfts, nftCount, loadMoreItems, isLoading, pageKey } = useOwnerNfts();
+  const { nfts, nftCount, loadMoreItems, isLoading, pageKey } =
+    useOwnerNftsApi();
   const [user] = useAtom(userAtom);
   const router = useRouter();
 
