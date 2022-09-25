@@ -1,4 +1,5 @@
 import NftList from 'components/NftList';
+import NftListLoading from 'components/NftListLoading';
 import { useNftCollectionApi } from 'hooks/useNftCollectionApi';
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -24,9 +25,10 @@ const MyNftPage: NextPage = () => {
         <title>POK NFTs - Collection</title>
       </Head>
       <div>
-        {collection && nfts && (
+        <h3>{collection?.name}</h3>
+        {isLoading && <NftListLoading />}
+        {nfts && (
           <NftList
-            title={collection.name}
             nfts={nfts}
             moreItems={!!pageKey}
             loadMoreItems={loadMoreItems}

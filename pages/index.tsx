@@ -1,5 +1,6 @@
 import CollectionList from 'components/CollectionList';
 import NftList from 'components/NftList';
+import NftListLoading from 'components/NftListLoading';
 import { useOwnerNftsApi } from 'hooks/useOwnerNftsApi';
 import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
@@ -11,7 +12,7 @@ import ConnectWalletButton from '../components/ConnectWalletButton';
 const Home: NextPage = () => {
   const [user] = useAtom(userAtom);
 
-  const { nfts, nftCount } = useOwnerNftsApi(OWNER_NFT_FRONT_PAGE);
+  const { nfts, nftCount, isLoading } = useOwnerNftsApi(OWNER_NFT_FRONT_PAGE);
 
   return (
     <>
@@ -30,7 +31,12 @@ const Home: NextPage = () => {
           </h2>
           {!user && <ConnectWalletButton />}
         </div>
-        {nfts && <NftList nfts={nfts} title="Your NFTs" nftCount={nftCount} />}
+        <div>
+          {' '}
+          <h3 className="mb-4">Your NFTs</h3>
+          {isLoading && <NftListLoading />}
+          {nfts && <NftList nfts={nfts} nftCount={nftCount} />}
+        </div>
         <CollectionList
           title="Featured Collections"
           collections={collections}

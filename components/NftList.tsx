@@ -17,14 +17,12 @@ const findNft = (
 
 const NftList = ({
   nfts,
-  title,
   nftCount,
   moreItems,
   loadMoreItems,
   isLoading = false,
 }: {
   nfts: Nft[];
-  title: string;
   nftCount?: number;
   moreItems?: boolean;
   isLoading?: boolean;
@@ -56,23 +54,20 @@ const NftList = ({
 
   return (
     <div>
-      <div className="flex items-baseline justify-between gap-4">
-        <h3>{title}</h3>
-        {!!nftCount && nftCount !== 0 && (
-          <div className="flex gap-4">
-            <p>
-              {nfts.length} of {nftCount}
-            </p>
-            {nfts.length < nftCount && (
-              <Link href="nfts">
-                <a className="font-bold uppercase tracking-widest text-sky-300">
-                  See more
-                </a>
-              </Link>
-            )}
-          </div>
-        )}
-      </div>
+      {!!nftCount && nftCount !== 0 && (
+        <div className="mb-4 flex gap-4">
+          <p>
+            {nfts.length} of {nftCount}
+          </p>
+          {nfts.length < nftCount && (
+            <Link href="nfts">
+              <a className="font-bold uppercase tracking-widest text-sky-300">
+                See more
+              </a>
+            </Link>
+          )}
+        </div>
+      )}
 
       {nfts.length > 0 ? (
         <>

@@ -26,10 +26,10 @@ const MyNftPage: NextPage = () => {
       </Head>
 
       <div>
+        <h3 className="mb-2">Your NFTs</h3>
         {nfts && (
           <NftList
             nfts={nfts}
-            title="Your NFTs"
             nftCount={nftCount}
             loadMoreItems={loadMoreItems}
             isLoading={isLoading}
