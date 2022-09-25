@@ -1,6 +1,6 @@
 import CollectionList from 'components/CollectionList';
 import NftList from 'components/NftList';
-import { useOwnerNfts } from 'hooks/useOwnerNfts';
+import { useOwnerNftsApi } from 'hooks/useOwnerNftsApi';
 import { useAtom } from 'jotai';
 import type { NextPage } from 'next';
 import Head from 'next/head';
@@ -11,7 +11,7 @@ import ConnectWalletButton from '../components/ConnectWalletButton';
 const Home: NextPage = () => {
   const [user] = useAtom(userAtom);
 
-  const { nfts, nftCount } = useOwnerNfts(OWNER_NFT_FRONT_PAGE);
+  const { nfts, nftCount } = useOwnerNftsApi(OWNER_NFT_FRONT_PAGE);
 
   return (
     <>
