@@ -14,7 +14,7 @@ const About: NextPage = () => {
         <div>
           <h6>The project</h6>
           <p>
-            This simple web app allows to browse POK of knowlege NFTs and
+            This simple web app allows to browse Proof of Knowlege NFTs and
             display the one owned by the user based on their wallet address.
           </p>
           <h6>Features</h6>

@@ -6,7 +6,7 @@ import { publicProvider } from 'wagmi/providers/public';
 const availableChains = [chain.polygon];
 
 const { chains, provider } = configureChains(availableChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }),
+  // alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }),
   publicProvider(),
 ]);
 
