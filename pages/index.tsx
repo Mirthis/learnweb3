@@ -31,12 +31,13 @@ const Home: NextPage = () => {
           </h2>
           {!user && <ConnectWalletButton />}
         </div>
-        <div>
-          {' '}
-          <h3 className="mb-4">Your NFTs</h3>
-          {isLoading && <NftListLoading />}
-          {nfts && <NftList nfts={nfts} nftCount={nftCount} />}
-        </div>
+        {user && (
+          <div>
+            <h3 className="mb-4">Your NFTs</h3>
+            {isLoading && <NftListLoading />}
+            {nfts && <NftList nfts={nfts} nftCount={nftCount} />}
+          </div>
+        )}
         <CollectionList
           title="Featured Collections"
           collections={collections}
