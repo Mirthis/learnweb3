@@ -16,7 +16,7 @@ This simple web app allows to browse Proof of knowlege NFTs and display the one 
 ## Tech
 
 - JavaScript / TypeScript - main coding language
-- NextJS / React JS - Web-app framework
+- Next JS / React JS - Web-app framework
 - Tailwind CSS - styling
 - Rainboww Kit / WAGMI - wallet connection
 - Alchemy-SDK - NFT retrieval

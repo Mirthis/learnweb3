@@ -39,7 +39,7 @@ const About: NextPage = () => {
                 main coding language
               </li>
               <li>
-                <span className="font-bold">NextJ S / React JS -</span> Web-app
+                <span className="font-bold">Next JS / React JS -</span> Web-app
                 framework
               </li>
               <li>
